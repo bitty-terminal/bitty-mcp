@@ -30,13 +30,21 @@ Tooling expectations follow [AGENTS.md](AGENTS.md):
 
 ## Development loop
 
-The justfile does not exist yet; wiring it up is a separate, explicitly scoped
-task. Until then:
+All quality gates run through the repository justfile; never invoke formatters
+or linters directly by name:
+
+```text
+just lint          Markdown lint (markdownlint-cli2)
+just fmt-check     Format check (Prettier)
+just check         All stage gates
+```
+
+Commit messages are enforced by lefthook (`commit-msg` runs `just
+commit-check`), and staged `*.md` files are checked on `pre-commit`.
 
 1. Claim work through a CarryCtx task with explicit scopes.
 2. Make changes within your declared scope only.
-3. Run CI-equivalent checks locally (Markdown lint, link checks) before
-   requesting review.
+3. Run `just check` locally before requesting review.
 4. Record progress, checkpoints, and evidence in CarryCtx rather than relying
    on chat state.
 
