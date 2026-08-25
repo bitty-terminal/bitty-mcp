@@ -1,0 +1,13 @@
+commit-msg:
+  commands:
+    commitlint:
+      run: just commit-check {1}
+
+pre-commit:
+  commands:
+    markdown-lint:
+      glob: "*.md"
+      run: bunx --bun markdownlint-cli2@0.23.1 {staged_files}
+    format-check:
+      glob: "*.md"
+      run: bunx --bun prettier@3.9.6 --check --ignore-unknown {staged_files}

@@ -8,5 +8,11 @@ and this project adheres to
 
 ## [Unreleased]
 
-- No released changes yet. This repository is pre-implementation and has no
-  initial release; entries will appear here once scoped work is accepted.
+### Added
+
+- Enforceable quality gates: pinned justfile targets (markdownlint-cli2,
+  Prettier, commitlint), lefthook commit hooks, and a read-only GitHub Actions
+  CI workflow.
+
+- The repository remains pre-implementation and has no initial release;
+  entries appear here as scoped work is accepted.
