@@ -60,6 +60,15 @@ Issue -> Branch -> Commit -> Pull Request -> Review -> Merge
 - Independent review plus required CI must pass before merge.
 - Documentation synchronization in `bitty-docs` is part of definition of done.
 
+### Branch and worktree naming
+
+- Branches use `ctx-XXXX/<type>-<short-slug>`, where `XXXX` is the owning
+  CarryCtx task number, `<type>` is one of `feat`, `fix`, `chore`, or `docs`,
+  and `<short-slug>` is a short kebab-case description.
+- CarryCtx-bound worktrees live at `.worktrees/ctx-XXXX-<type>-<short-slug>`,
+  with `/` mapped to `-`.
+- Use one branch per task; commander housekeeping branches may use `cmd/<slug>`.
+
 ## Committing
 
 Use [Conventional Commits](https://www.conventionalcommits.org/en/v1.0.0/):

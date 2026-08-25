@@ -35,6 +35,9 @@
 - After the first commit, prefer a dedicated branch and Git worktree for each
   independent task. Before it, shared-checkout initialization is allowed only
   for disjoint scopes with CI-equivalent local checks.
+- Branch and worktree naming follows `ctx-XXXX/<type>-<short-slug>` and
+  `.worktrees/ctx-XXXX-<type>-<short-slug>` (one branch per task; `cmd/<slug>`
+  is reserved for commander housekeeping).
 - Preserve unrelated changes. Do not commit, push, release, or mutate remote
   state without explicit authorization.
 
