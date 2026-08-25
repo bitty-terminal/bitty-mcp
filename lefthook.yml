@@ -1,13 +1,16 @@
+# Git hooks managed by lefthook. Install with `just hooks-install`.
+# All tool pins live in the justfile; this file only wires hooks to it.
+
 commit-msg:
   commands:
-    commitlint:
+    commit-check:
       run: just commit-check {1}
 
 pre-commit:
   commands:
-    markdown-lint:
+    markdownlint-staged:
       glob: "*.md"
-      run: bunx --bun markdownlint-cli2@0.23.1 {staged_files}
-    format-check:
+      run: just lint-files {staged_files}
+    prettier-staged:
       glob: "*.md"
-      run: bunx --bun prettier@3.9.6 --check --ignore-unknown {staged_files}
+      run: just fmt-check-files {staged_files}
