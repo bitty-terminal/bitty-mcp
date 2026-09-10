@@ -45,3 +45,11 @@ hooks-uninstall:
 
 # Run every stage gate (commit messages are gated separately per commit)
 check: lint fmt-check
+
+# Publish a ctxpack snapshot to the bitty-mcp-workflow mirror (commander
+# merge closeout only; never a git hook). Dry run exports + validates without push.
+workflow-publish *args:
+    bash scripts/publish-ctxpack.sh {{args}}
+
+workflow-publish-dry *args:
+    bash scripts/publish-ctxpack.sh --dry-run {{args}}
