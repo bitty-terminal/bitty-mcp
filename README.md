@@ -32,6 +32,28 @@ be treated as instructions or authority. Exact transports, schemas,
 authentication mechanisms, supported clients, and write-capable operations
 remain open until accepted through reviewable contracts.
 
+## Workflow mirror restore
+
+CarryCtx runtime state (`.git/carryctx/state.sqlite`) is never cloned. The
+engineering workflow is mirrored to
+[bitty-mcp-workflow](https://github.com/bitty-terminal/bitty-mcp-workflow) as
+redacted ctxpack snapshots, with `LATEST` naming the newest snapshot. A fresh
+clone can restore its local CarryCtx DB from that mirror:
+
+```sh
+just workflow-import-dry   # fetch + validate the LATEST snapshot; no DB writes
+just workflow-import       # initialize CarryCtx state if needed, then import
+```
+
+The import validates snapshot shape, per-table row counts, and the v2 redacted
+stamp before any write, refuses to replace a non-empty local DB without
+`--force` (`just workflow-import --force`, or pass flags directly to
+`scripts/fetch-ctxpack.sh`), and prints provenance (snapshot id + source
+commit) plus restored counts. Mirror snapshots are redacted publication
+artifacts: CarryCtx refuses them as merge sources, so restore always uses
+replace mode, and a secret that leaked before rotation must still be rotated
+at the source.
+
 ## Current status
 
 Only repository governance and planning foundations exist. There is currently:
