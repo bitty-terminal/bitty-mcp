@@ -1,0 +1,11 @@
+{
+  "created_at": "2026-08-25T11:24:50.091750411+00:00",
+  "git_common_dir": "***REDACTED-PATH***",
+  "id": "01M0WAMX1BRZT5TP0FRFAX0TA9",
+  "main_branch": "main",
+  "name": "bitty-mcp",
+  "repository_root": "***REDACTED-PATH***",
+  "schema_version": 4,
+  "task_prefix": "CTX",
+  "updated_at": "2026-08-25T11:24:50.091750411+00:00"
+}
